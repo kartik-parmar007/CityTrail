@@ -85,15 +85,32 @@ export default function ProfileScreen() {
         </View>
 
         <View style={styles.section}>
-          <TouchableOpacity style={styles.menuItem}>
+          <TouchableOpacity
+            style={styles.menuItem}
+            onPress={() => router.push('/about')}
+          >
             <View style={styles.menuItemLeft}>
-              <Ionicons name="help-circle-outline" size={24} color="#136dec" />
-              <Text style={styles.menuItemText}>Help & Support</Text>
+              <Ionicons name="information-circle-outline" size={24} color="#136dec" />
+              <Text style={styles.menuItemText}>About Us</Text>
             </View>
             <Ionicons name="chevron-forward" size={20} color="#94a3b8" />
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.menuItem}>
+          <TouchableOpacity
+            style={styles.menuItem}
+            onPress={() => router.push('/contact')}
+          >
+            <View style={styles.menuItemLeft}>
+              <Ionicons name="help-circle-outline" size={24} color="#136dec" />
+              <Text style={styles.menuItemText}>Help & Support / Contact Us</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={20} color="#94a3b8" />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.menuItem}
+            onPress={() => router.push('/terms')}
+          >
             <View style={styles.menuItemLeft}>
               <Ionicons name="document-text-outline" size={24} color="#136dec" />
               <Text style={styles.menuItemText}>Terms & Conditions</Text>
@@ -108,6 +125,17 @@ export default function ProfileScreen() {
             <View style={styles.menuItemLeft}>
               <Ionicons name="shield-checkmark-outline" size={24} color="#136dec" />
               <Text style={styles.menuItemText}>Privacy Policy</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={20} color="#94a3b8" />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.menuItem}
+            onPress={() => router.push('/refund')}
+          >
+            <View style={styles.menuItemLeft}>
+              <Ionicons name="cash-outline" size={24} color="#136dec" />
+              <Text style={styles.menuItemText}>Refund & Cancellation Policy</Text>
             </View>
             <Ionicons name="chevron-forward" size={20} color="#94a3b8" />
           </TouchableOpacity>
