@@ -1,0 +1,19 @@
+﻿branch 'main' set up to track 'origin/main'.
+git : To https://github.com/k
+artik-parmar007/CityTrail.git
+At line:1 char:1
++ git push -u origin main 
+2>&1 | Out-File -Encoding 
+utf8 push_out.txt
++ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo           
+   : NotSpecified: (To http  
+  s://gith...7/CityTrail.g   
+ it:String) [], RemoteExc    
+eption
+    + FullyQualifiedErrorId  
+   : NativeCommandError
+ 
+ * [new branch]      main -> 
+main
