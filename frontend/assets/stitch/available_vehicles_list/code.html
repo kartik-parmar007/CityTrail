@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RideX - Available Vehicles</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#136dec",
+              "primary-content": "#ffffff",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101822",
+              "surface-light": "#ffffff",
+              "surface-dark": "#1a2634",
+              "text-main": "#0f172a",
+              "text-muted": "#64748b",
+            },
+            fontFamily: {
+              display: ["Manrope", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              "2xl": "1rem",
+              full: "9999px",
+            },
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-text-main font-display antialiased min-h-screen flex flex-col">
+<!-- Header & Search Context -->
+<header class="sticky top-0 z-20 bg-surface-light/95 dark:bg-surface-dark/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 pt-12 pb-4 shadow-sm">
+<div class="flex items-center gap-4 mb-4">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors text-text-main dark:text-slate-200">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex-1">
+<h1 class="text-xl font-bold text-text-main dark:text-slate-100 leading-tight">Select Ride</h1>
+<p class="text-xs text-text-muted dark:text-slate-400">San Francisco → Los Angeles • Today, 10:00 AM</p>
+</div>
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors text-text-main dark:text-slate-200">
+<span class="material-symbols-outlined">tune</span>
+</button>
+</div>
+<!-- Filter Chips -->
+<div class="flex gap-2 overflow-x-auto pb-2 -mx-4 px-4 scrollbar-hide">
+<button class="flex shrink-0 items-center gap-1.5 rounded-full bg-primary text-white px-4 py-2 text-sm font-semibold shadow-md shadow-primary/20 transition-transform active:scale-95">
+<span class="material-symbols-outlined text-[18px]">sort</span>
+                Recommended
+            </button>
+<button class="flex shrink-0 items-center gap-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm font-medium text-text-main dark:text-slate-200 shadow-sm transition-colors hover:bg-slate-50 dark:hover:bg-slate-700 active:scale-95">
+<span class="material-symbols-outlined text-[18px]">directions_car</span>
+                Type
+            </button>
+<button class="flex shrink-0 items-center gap-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm font-medium text-text-main dark:text-slate-200 shadow-sm transition-colors hover:bg-slate-50 dark:hover:bg-slate-700 active:scale-95">
+<span class="material-symbols-outlined text-[18px]">group</span>
+                Seats
+            </button>
+<button class="flex shrink-0 items-center gap-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm font-medium text-text-main dark:text-slate-200 shadow-sm transition-colors hover:bg-slate-50 dark:hover:bg-slate-700 active:scale-95">
+<span class="material-symbols-outlined text-[18px]">luggage</span>
+                Luggage
+            </button>
+</div>
+</header>
+<!-- Main Content List -->
+<main class="flex-1 p-4 flex flex-col gap-4 pb-24">
+<!-- Promo Banner -->
+<div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-500 to-primary p-5 shadow-lg shadow-primary/20 mb-2">
+<div class="relative z-10 flex flex-col items-start gap-3">
+<span class="rounded-md bg-white/20 px-2 py-1 text-xs font-bold text-white uppercase tracking-wider backdrop-blur-sm">Offer</span>
+<h3 class="text-lg font-bold text-white max-w-[70%]">Get 15% off on your first outstation trip!</h3>
+<button class="rounded-full bg-white px-4 py-2 text-xs font-bold text-primary shadow-sm active:scale-95 transition-transform">Claim Now</button>
+</div>
+<div class="absolute -right-4 -bottom-8 opacity-20">
+<span class="material-symbols-outlined text-[140px] text-white">local_taxi</span>
+</div>
+<div class="absolute right-0 top-0 h-full w-1/2 bg-gradient-to-l from-black/10 to-transparent"></div>
+</div>
+<!-- Vehicle Card 1: Economy -->
+<div class="group bg-surface-light dark:bg-surface-dark rounded-2xl p-4 shadow-[0_2px_12px_-4px_rgba(0,0,0,0.1)] border border-transparent hover:border-primary/20 transition-all">
+<div class="flex gap-4">
+<!-- Image Section -->
+<div class="relative w-28 h-24 shrink-0 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
+<img alt="White economy sedan car side view" class="w-full h-full object-cover" data-alt="White economy sedan car side view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLroDrMCBxYPPk7ptF_jjjSe5Jo9q8BMRcNt4wTNhHNPs_jpQYYN7GuvMMbgHjLhyc5ZIPD1HTNHIJ1-VAzGboKIrjvKhNWBJDsjdYfPsIqEhEoU_e47qGzj0lHglOHDQneS1ZjB5qpKuCa8HdorYuQimcLPXX1WMoErdSNwy0DM20HmcPzNgqho-JCTH7fASKwpKzmk99nCTCYEcLpy3Tj011bGoBukOF_ZCtSpn15RpHe4zhJwS-hv8Rw-XbIiMXoxW6DqPAkI6E"/>
+<div class="absolute top-1 left-1 bg-green-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm">Eco</div>
+</div>
+<!-- Info Section -->
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-bold text-lg text-text-main dark:text-slate-100">Compact Sedan</h3>
+<div class="text-right">
+<span class="block text-lg font-bold text-text-main dark:text-slate-100">$45</span>
+<span class="block text-xs text-text-muted dark:text-slate-400">Total est.</span>
+</div>
+</div>
+<p class="text-sm text-text-muted dark:text-slate-400 font-medium">Toyota Etios or similar</p>
+</div>
+<!-- Features -->
+<div class="flex items-center gap-3 mt-2 text-xs text-text-muted dark:text-slate-400">
+<div class="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[14px]">person</span>
+<span>4</span>
+</div>
+<div class="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[14px]">luggage</span>
+<span>2</span>
+</div>
+<div class="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[14px]">ac_unit</span>
+<span>AC</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+<div class="flex items-center gap-1 text-xs text-green-600 dark:text-green-400 font-medium">
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+<span>Instant Confirmation</span>
+</div>
+<button class="bg-primary text-white text-sm font-semibold px-6 py-2 rounded-lg shadow-md shadow-primary/20 active:scale-95 transition-transform hover:bg-primary/90">
+                    Book Now
+                </button>
+</div>
+</div>
+<!-- Vehicle Card 2: Premium Sedan -->
+<div class="group bg-surface-light dark:bg-surface-dark rounded-2xl p-4 shadow-[0_2px_12px_-4px_rgba(0,0,0,0.1)] border border-primary/40 relative overflow-hidden">
+<div class="absolute top-0 right-0 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg z-10">BEST VALUE</div>
+<div class="flex gap-4 relative z-0">
+<!-- Image Section -->
+<div class="relative w-28 h-24 shrink-0 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
+<img alt="Silver premium sedan car studio shot" class="w-full h-full object-cover" data-alt="Silver premium sedan car studio shot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnzL_VjGpqqYd9DfqfteoSyOmzmnjC-XiNcTXhjkqkW7lnJeQXkiSh2ixGyiqqHvsK0fInxfTtFyBMri9ACI-gC63M2qfOixEUbsL99WEvo_q4C0wtBFNxRs-XxqcKhV2MbkDvXQAdLyb_GG0PhpMZXH_f3DIbPXClJIa40YmfYEGN4mbiJW4tkE6mLw9w4o0J7XwPHSg5ABDhHRPaKvoY4a8dFH8Jlvn-i11HS9eRFq7fnH-XOxTc804HEtAua6bOyrCYfOdz4yS1"/>
+</div>
+<!-- Info Section -->
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-bold text-lg text-text-main dark:text-slate-100">Premium Sedan</h3>
+<div class="text-right">
+<span class="block text-lg font-bold text-primary dark:text-primary">$58</span>
+<span class="block text-xs text-text-muted dark:text-slate-400">Total est.</span>
+</div>
+</div>
+<p class="text-sm text-text-muted dark:text-slate-400 font-medium">Toyota Camry or similar</p>
+</div>
+<!-- Features -->
+<div class="flex items-center gap-3 mt-2 text-xs text-text-muted dark:text-slate-400">
+<div class="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[14px]">person</span>
+<span>4+1</span>
+</div>
+<div class="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[14px]">luggage</span>
+<span>3</span>
+</div>
+<div class="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[14px]">wifi</span>
+<span>WiFi</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+<div class="flex items-center gap-1 text-xs text-text-muted dark:text-slate-400">
+<span class="material-symbols-outlined text-[16px]">local_gas_station</span>
+<span>Petrol</span>
+<span class="mx-1">•</span>
+<span>Automatic</span>
+</div>
+<button class="bg-primary text-white text-sm font-semibold px-6 py-2 rounded-lg shadow-md shadow-primary/20 active:scale-95 transition-transform hover:bg-primary/90">
+                    Book Now
+                </button>
+</div>
+</div>
+<!-- Vehicle Card 3: SUV -->
+<div class="group bg-surface-light dark:bg-surface-dark rounded-2xl p-4 shadow-[0_2px_12px_-4px_rgba(0,0,0,0.1)] border border-transparent hover:border-primary/20 transition-all">
+<div class="flex gap-4">
+<!-- Image Section -->
+<div class="relative w-28 h-24 shrink-0 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
+<img alt="Black SUV luxury car front view" class="w-full h-full object-cover" data-alt="Black SUV luxury car front view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVu6IdjhiVGEfciz35sfI3RxpgqzCPHjwWkP9OKqwh0cVaQxPL_FKkk9WqqY5Z5ykOD6W0t7avVBZrfHpomQZllRBryHP6J8OOOsbtIOBuEHzD4JCaz9EOclZDnbBUBA1ozB8RF1SukTCL-Jq6Y7m7Y3_iF2mP74oYLVjq3JEftZDmgK1LeoMhLUZvLDRr9t0SDq6BtLEZRalahDzrgh91mXj5XFfy5Elr3Mfgb1gBTAqK5eRp_dtsEU4VpHvYmfrBRo3Nc4Qo3XVC"/>
+</div>
+<!-- Info Section -->
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-bold text-lg text-text-main dark:text-slate-100">Luxury SUV</h3>
+<div class="text-right">
+<span class="block text-lg font-bold text-text-main dark:text-slate-100">$85</span>
+<span class="block text-xs text-text-muted dark:text-slate-400">Total est.</span>
+</div>
+</div>
+<p class="text-sm text-text-muted dark:text-slate-400 font-medium">Toyota Fortuner or similar</p>
+</div>
+<!-- Features -->
+<div class="flex items-center gap-3 mt-2 text-xs text-text-muted dark:text-slate-400">
+<div class="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[14px]">person</span>
+<span>6+1</span>
+</div>
+<div class="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[14px]">luggage</span>
+<span>4</span>
+</div>
+<div class="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[14px]">diamond</span>
+<span>Prem</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+<div class="flex items-center gap-1 text-xs text-text-muted dark:text-slate-400">
+<span class="material-symbols-outlined text-[16px]">airline_seat_recline_extra</span>
+<span>Leather Seats</span>
+</div>
+<button class="bg-primary text-white text-sm font-semibold px-6 py-2 rounded-lg shadow-md shadow-primary/20 active:scale-95 transition-transform hover:bg-primary/90">
+                    Book Now
+                </button>
+</div>
+</div>
+<!-- Vehicle Card 4: Van -->
+<div class="group bg-surface-light dark:bg-surface-dark rounded-2xl p-4 shadow-[0_2px_12px_-4px_rgba(0,0,0,0.1)] border border-transparent hover:border-primary/20 transition-all opacity-80">
+<div class="flex gap-4">
+<!-- Image Section -->
+<div class="relative w-28 h-24 shrink-0 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden grayscale">
+<img alt="Grey passenger van side view" class="w-full h-full object-cover" data-alt="Grey passenger van side view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVO1rhdBz4ctLkRRW9ARno6qfFGTQYl8n-o7WnsqDpmLv_KRJ7H-BDwVAyq-9Fok4F6-1cUiOGDCu8XPpHwnhgLh2UQuvol2B92nmb3iksoo7srqMZXdbHxVN4Z16GPgeW7lPqsS58DwVyzPWkckS4byh-6C-koQBxFS78H0-a11FxtCxIEFLkDfN2oxL1KGf12Q75E4iYjrdOCZIif01W4o7O-0oRUvWnMKg3tsvSeeyEniruAyZOIhAxPRJB42YBWrwrNgBGtcMe"/>
+<div class="absolute inset-0 bg-black/10 flex items-center justify-center">
+<span class="bg-black/60 text-white text-xs px-2 py-1 rounded font-bold backdrop-blur-sm">Sold Out</span>
+</div>
+</div>
+<!-- Info Section -->
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-bold text-lg text-text-main dark:text-slate-100">Large Van</h3>
+<div class="text-right">
+<span class="block text-lg font-bold text-text-main dark:text-slate-100">$120</span>
+<span class="block text-xs text-text-muted dark:text-slate-400">Total est.</span>
+</div>
+</div>
+<p class="text-sm text-text-muted dark:text-slate-400 font-medium">Mercedes Sprinter</p>
+</div>
+<!-- Features -->
+<div class="flex items-center gap-3 mt-2 text-xs text-text-muted dark:text-slate-400">
+<div class="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[14px]">person</span>
+<span>12</span>
+</div>
+<div class="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[14px]">luggage</span>
+<span>8</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+<div class="text-xs text-text-muted dark:text-slate-400 italic">Not available for selected time</div>
+<button class="bg-slate-200 dark:bg-slate-700 text-slate-400 dark:text-slate-500 text-sm font-semibold px-6 py-2 rounded-lg cursor-not-allowed" disabled="">
+                    Unavailable
+                </button>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 z-30 w-full bg-surface-light dark:bg-surface-dark border-t border-slate-200 dark:border-slate-800 safe-area-bottom pb-safe">
+<div class="flex justify-around items-center px-2 py-3">
+<a class="flex flex-col items-center gap-1 min-w-[64px] group" href="#">
+<span class="material-symbols-outlined text-[24px] text-primary transition-colors">search</span>
+<span class="text-[10px] font-medium text-primary transition-colors">Search</span>
+</a>
+<a class="flex flex-col items-center gap-1 min-w-[64px] group" href="#">
+<span class="material-symbols-outlined text-[24px] text-slate-400 group-hover:text-primary transition-colors">calendar_month</span>
+<span class="text-[10px] font-medium text-slate-400 group-hover:text-primary transition-colors">Bookings</span>
+</a>
+<a class="flex flex-col items-center gap-1 min-w-[64px] group" href="#">
+<span class="material-symbols-outlined text-[24px] text-slate-400 group-hover:text-primary transition-colors">local_offer</span>
+<span class="text-[10px] font-medium text-slate-400 group-hover:text-primary transition-colors">Offers</span>
+</a>
+<a class="flex flex-col items-center gap-1 min-w-[64px] group" href="#">
+<span class="material-symbols-outlined text-[24px] text-slate-400 group-hover:text-primary transition-colors">account_circle</span>
+<span class="text-[10px] font-medium text-slate-400 group-hover:text-primary transition-colors">Profile</span>
+</a>
+</div>
+</nav>
+<!-- Safe area spacing for iOS Home Indicator -->
+<style>
+        .safe-area-bottom {
+            padding-bottom: env(safe-area-inset-bottom, 20px);
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</body></html>

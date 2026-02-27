@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RideX Home Search</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#136dec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101822",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hide for cleaner UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased selection:bg-primary selection:text-white">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-hidden max-w-md mx-auto bg-white dark:bg-slate-900 shadow-2xl">
+<!-- Header -->
+<header class="sticky top-0 z-10 flex items-center justify-between bg-white dark:bg-slate-900 px-4 py-3 pb-2 border-b border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<button class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-50 text-slate-900 hover:bg-slate-100 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined text-[24px]">menu</span>
+</button>
+<h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">RideX</h1>
+</div>
+<button class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-50 text-slate-900 hover:bg-slate-100 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700 relative">
+<span class="material-symbols-outlined text-[24px]">notifications</span>
+<span class="absolute top-2 right-2 h-2 w-2 rounded-full bg-red-500"></span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto no-scrollbar pb-24">
+<!-- Hero / Search Section -->
+<div class="px-4 py-6">
+<h2 class="mb-6 text-2xl font-bold leading-tight text-slate-900 dark:text-white">
+                    Where do you want <br/> <span class="text-primary">to go today?</span>
+</h2>
+<!-- Trip Type Toggle -->
+<div class="mb-6 flex h-12 w-full items-center rounded-xl bg-slate-100 dark:bg-slate-800 p-1">
+<label class="group relative flex h-full flex-1 cursor-pointer items-center justify-center overflow-hidden rounded-lg">
+<input checked="" class="peer sr-only" name="trip-type" type="radio" value="oneway"/>
+<span class="relative z-10 text-sm font-medium text-slate-500 transition-colors peer-checked:text-white dark:text-slate-400">One Way</span>
+<div class="absolute inset-0 z-0 bg-primary opacity-0 transition-opacity peer-checked:opacity-100 rounded-lg shadow-sm"></div>
+</label>
+<label class="group relative flex h-full flex-1 cursor-pointer items-center justify-center overflow-hidden rounded-lg">
+<input class="peer sr-only" name="trip-type" type="radio" value="roundtrip"/>
+<span class="relative z-10 text-sm font-medium text-slate-500 transition-colors peer-checked:text-white dark:text-slate-400">Roundtrip</span>
+<div class="absolute inset-0 z-0 bg-primary opacity-0 transition-opacity peer-checked:opacity-100 rounded-lg shadow-sm"></div>
+</label>
+<label class="group relative flex h-full flex-1 cursor-pointer items-center justify-center overflow-hidden rounded-lg">
+<input class="peer sr-only" name="trip-type" type="radio" value="local"/>
+<span class="relative z-10 text-sm font-medium text-slate-500 transition-colors peer-checked:text-white dark:text-slate-400">Local</span>
+<div class="absolute inset-0 z-0 bg-primary opacity-0 transition-opacity peer-checked:opacity-100 rounded-lg shadow-sm"></div>
+</label>
+</div>
+<!-- Input Fields -->
+<div class="space-y-4">
+<!-- Pickup -->
+<div class="group relative flex items-center rounded-xl bg-slate-50 px-4 py-3 ring-1 ring-slate-200 focus-within:ring-2 focus-within:ring-primary dark:bg-slate-800 dark:ring-slate-700">
+<span class="material-symbols-outlined mr-3 text-primary">my_location</span>
+<div class="flex flex-1 flex-col">
+<label class="text-xs font-medium text-slate-500 dark:text-slate-400">Pickup Location</label>
+<input class="w-full border-none bg-transparent p-0 text-sm font-semibold text-slate-900 placeholder-slate-400 focus:ring-0 dark:text-white" placeholder="Current Location" type="text" value="San Francisco Intl Airport"/>
+</div>
+</div>
+<!-- Dropoff -->
+<div class="group relative flex items-center rounded-xl bg-slate-50 px-4 py-3 ring-1 ring-slate-200 focus-within:ring-2 focus-within:ring-primary dark:bg-slate-800 dark:ring-slate-700">
+<span class="material-symbols-outlined mr-3 text-slate-400">location_on</span>
+<div class="flex flex-1 flex-col">
+<label class="text-xs font-medium text-slate-500 dark:text-slate-400">Drop-off Location</label>
+<input class="w-full border-none bg-transparent p-0 text-sm font-semibold text-slate-900 placeholder-slate-400 focus:ring-0 dark:text-white" placeholder="Enter destination" type="text"/>
+</div>
+</div>
+<!-- Date & Time Row -->
+<div class="flex gap-4">
+<div class="group relative flex flex-1 items-center rounded-xl bg-slate-50 px-4 py-3 ring-1 ring-slate-200 focus-within:ring-2 focus-within:ring-primary dark:bg-slate-800 dark:ring-slate-700">
+<span class="material-symbols-outlined mr-2 text-slate-400">calendar_today</span>
+<div class="flex flex-col">
+<label class="text-xs font-medium text-slate-500 dark:text-slate-400">Date</label>
+<input class="w-full border-none bg-transparent p-0 text-sm font-semibold text-slate-900 focus:ring-0 dark:text-white" placeholder="Select Date" type="text" value="Today, 24 Oct"/>
+</div>
+</div>
+<div class="group relative flex flex-1 items-center rounded-xl bg-slate-50 px-4 py-3 ring-1 ring-slate-200 focus-within:ring-2 focus-within:ring-primary dark:bg-slate-800 dark:ring-slate-700">
+<span class="material-symbols-outlined mr-2 text-slate-400">schedule</span>
+<div class="flex flex-col">
+<label class="text-xs font-medium text-slate-500 dark:text-slate-400">Time</label>
+<input class="w-full border-none bg-transparent p-0 text-sm font-semibold text-slate-900 focus:ring-0 dark:text-white" placeholder="Select Time" type="text" value="10:00 AM"/>
+</div>
+</div>
+</div>
+<!-- Search Button -->
+<button class="mt-4 flex w-full items-center justify-center rounded-xl bg-primary py-4 text-base font-bold text-white shadow-lg shadow-primary/30 transition-transform active:scale-[0.98]">
+                        Search Cars
+                    </button>
+</div>
+</div>
+<!-- Recommended Deals -->
+<div class="mt-2 px-4">
+<div class="mb-4 flex items-center justify-between">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Recommended Deals</h3>
+<a class="text-sm font-medium text-primary" href="#">See All</a>
+</div>
+<div class="flex space-x-4 overflow-x-auto pb-4 no-scrollbar">
+<!-- Card 1 -->
+<div class="min-w-[240px] flex-shrink-0 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-100 dark:bg-slate-800 dark:ring-slate-700">
+<div class="mb-3 flex items-start justify-between">
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white">Tesla Model 3</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400">Electric • Automatic</p>
+</div>
+<span class="rounded-full bg-green-100 px-2 py-1 text-[10px] font-bold text-green-700 dark:bg-green-900/30 dark:text-green-400">BEST VALUE</span>
+</div>
+<div class="relative mb-3 h-28 w-full overflow-hidden rounded-lg bg-slate-50 dark:bg-slate-700/50">
+<img alt="Car Image" class="h-full w-full object-cover mix-blend-multiply dark:mix-blend-normal" data-alt="White Tesla Model 3 side view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDo-ci1tQPNCQ7TxJn-uUm39Pn_hrxunCRwf1fxZtYfAxJZHAmeyfE3YIeSVMv6nPhOok5Cu6zkBP_uwDZ3FkLy05wj_nLVobkBz2QjXrixYob8jM-aBQvnQin5QjnU2ZDTguGSOG-Mzckhfmxc1DJFlB1niST1sWtQd9zT66PgUGg7YTMCCB2qqmnu1RFbEB25i6khrtw5L4pgRMQBHeReLy5LLcMuyQVuxXRFcfE-bKAwo7DtUmPytMaLomI0N-dsqDoZaPQYNd1H"/>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<span class="text-lg font-bold text-primary">$45</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">/hr</span>
+</div>
+<button class="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-900 hover:bg-slate-200 dark:bg-slate-700 dark:text-white">
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="min-w-[240px] flex-shrink-0 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-100 dark:bg-slate-800 dark:ring-slate-700">
+<div class="mb-3 flex items-start justify-between">
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white">BMW 5 Series</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400">Luxury • Automatic</p>
+</div>
+<span class="rounded-full bg-purple-100 px-2 py-1 text-[10px] font-bold text-purple-700 dark:bg-purple-900/30 dark:text-purple-400">PREMIUM</span>
+</div>
+<div class="relative mb-3 h-28 w-full overflow-hidden rounded-lg bg-slate-50 dark:bg-slate-700/50">
+<img alt="Car Image" class="h-full w-full object-cover mix-blend-multiply dark:mix-blend-normal" data-alt="Black BMW front view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjIWy7cmLtEKmhz8pLvF0nZN-wvPvM20sJyw2Lwo2JnZn1HQrOFoDLd37PAFVgctc6jYVwONaiXT2SnJngk2LBglCvyiv_MR8ZI58goTxbDfx1qA0xokH0gI2WPfzy1yGFjb_9brIdqllwY7H7Fc7xQ3wxE22EcTJSi9B1IqbgxRax6JrDx8_gErrzXTVCo22U7k7fQvZYcQR8KGf1jlgLDwUN-A9J27BIeN3D5qJb6jTOwlmlxti9II4Vjfx8LZw6W7fqJXAzuNA2"/>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<span class="text-lg font-bold text-primary">$68</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">/hr</span>
+</div>
+<button class="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-900 hover:bg-slate-200 dark:bg-slate-700 dark:text-white">
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="min-w-[240px] flex-shrink-0 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-100 dark:bg-slate-800 dark:ring-slate-700">
+<div class="mb-3 flex items-start justify-between">
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white">Mercedes C-Class</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400">Sedan • Automatic</p>
+</div>
+</div>
+<div class="relative mb-3 h-28 w-full overflow-hidden rounded-lg bg-slate-50 dark:bg-slate-700/50">
+<img alt="Car Image" class="h-full w-full object-cover mix-blend-multiply dark:mix-blend-normal" data-alt="Silver Mercedes sedan side profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAi21klkuQwGFl3KkEZTe3xFlRpSuOBzHOq_dWXVROA2NXECOBrvSS4-WjDmuWaZlVgmIS4efXoA9Wbr0urL5nAwaldgkLYN2UljUtpoSK8Wf2WTyRs48v10Kr_nL5FcwFfdQhE1Fu66zzUFQ6-3d7bzPpjW9e6AfaNWUZWyvnN6vC64YTFHg0Wa8qbm_i5XU1MKsMqNZwb0PZkNZxJipmD3AJp2Gv2QYC0PjnXuJDY3OuPjE6UjjcXSNWBHyQ8l5c1EW805lrCJly"/>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<span class="text-lg font-bold text-primary">$55</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">/hr</span>
+</div>
+<button class="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-900 hover:bg-slate-200 dark:bg-slate-700 dark:text-white">
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Searches -->
+<div class="mt-4 px-4 mb-6">
+<h3 class="mb-3 text-lg font-bold text-slate-900 dark:text-white">Recent Searches</h3>
+<div class="space-y-3">
+<div class="flex items-center justify-between rounded-xl bg-white p-3 shadow-sm ring-1 ring-slate-100 dark:bg-slate-800 dark:ring-slate-700">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300">
+<span class="material-symbols-outlined text-[20px]">history</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-slate-900 dark:text-white">SFO Airport <span class="mx-1 text-slate-400">→</span> Downtown</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Today, 2 pax</p>
+</div>
+</div>
+<button class="text-primary hover:text-primary/80">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<div class="flex items-center justify-between rounded-xl bg-white p-3 shadow-sm ring-1 ring-slate-100 dark:bg-slate-800 dark:ring-slate-700">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300">
+<span class="material-symbols-outlined text-[20px]">history</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-slate-900 dark:text-white">Palo Alto <span class="mx-1 text-slate-400">→</span> Santa Cruz</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Yesterday, 1 pax</p>
+</div>
+</div>
+<button class="text-primary hover:text-primary/80">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation -->
+<nav class="absolute bottom-0 w-full border-t border-slate-200 bg-white/90 backdrop-blur-md dark:border-slate-800 dark:bg-slate-900/90 pb-safe">
+<div class="flex items-center justify-between px-6 py-2">
+<a class="group flex flex-col items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[28px] text-primary transition-colors group-hover:text-primary">home</span>
+<span class="text-[10px] font-medium text-primary">Home</span>
+</a>
+<a class="group flex flex-col items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[28px] text-slate-400 transition-colors group-hover:text-slate-600 dark:text-slate-500 dark:group-hover:text-slate-300">confirmation_number</span>
+<span class="text-[10px] font-medium text-slate-400 transition-colors group-hover:text-slate-600 dark:text-slate-500 dark:group-hover:text-slate-300">Bookings</span>
+</a>
+<a class="group flex flex-col items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[28px] text-slate-400 transition-colors group-hover:text-slate-600 dark:text-slate-500 dark:group-hover:text-slate-300">local_offer</span>
+<span class="text-[10px] font-medium text-slate-400 transition-colors group-hover:text-slate-600 dark:text-slate-500 dark:group-hover:text-slate-300">Offers</span>
+</a>
+<a class="group flex flex-col items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[28px] text-slate-400 transition-colors group-hover:text-slate-600 dark:text-slate-500 dark:group-hover:text-slate-300">person</span>
+<span class="text-[10px] font-medium text-slate-400 transition-colors group-hover:text-slate-600 dark:text-slate-500 dark:group-hover:text-slate-300">Profile</span>
+</a>
+</div>
+<!-- Safe area spacing for iOS home indicator -->
+<div class="h-5 w-full"></div>
+</nav>
+</div>
+</body></html>

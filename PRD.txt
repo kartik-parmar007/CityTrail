@@ -1,0 +1,68 @@
+# Product Requirements Document (PRD) - RideX
+
+## 1. Product Overview
+RideX is a comprehensive car rental and booking platform designed to provide users with seamless transportation solutions. The application allows users to search for vehicles, calculate fares based on trip types, and book rides for various purposes including local commutes and outstation travel.
+
+## 2. Target Audience
+*   Individual travelers looking for reliable car rentals.
+*   Business professionals needing local or outstation transportation.
+*   Families requiring spacious vehicles for trips.
+*   Admin users managing fleet operations and bookings.
+
+## 3. Key Features
+
+### 3.1 Trip Types
+*   **Oneway**: Point-to-point travel between cities.
+*   **Roundtrip**: Outstation travel with return included.
+*   **Local**: Hourly-based rentals within the city (e.g., 4hrs/40km, 8hrs/80km).
+
+### 3.2 User Authentication
+*   Secure user registration with name, email, phone, and password.
+*   JWT-based login system.
+*   User profile management.
+
+### 3.3 Car Categories & Fleet Management
+*   **Sedan**: Economical and comfortable (e.g., Honda Civic, Toyota Camry).
+*   **SUV**: Spacious for families and rugged terrain (e.g., Toyota Fortuner, Mahindra Scorpio).
+*   **Luxury**: Premium experience for special occasions (e.g., Mercedes S-Class, BMW 7 Series).
+*   Features tracked: Seating capacity, luggage space, price per km, and special features (AC, GPS, etc.).
+
+### 3.4 Booking Workflow
+*   **Search**: Users can search for pickup and drop-off locations.
+*   **Fare Estimation**: Dynamic fare calculation based on distance, trip type, driver allowance, and taxes.
+*   **Vehicle Selection**: List of available cars filtered by type.
+*   **Booking Confirmation**: Users provide passenger details and confirm bookings.
+*   **Booking History**: Users can view past and upcoming bookings and cancel pending ones.
+
+### 3.5 Admin Dashboard
+*   **Booking Management**: Monitor all bookings across the system.
+*   **Analytics**: Overview of total bookings, confirmed vs. cancelled orders, and total revenue.
+
+## 4. Technical Stack
+
+### 4.1 Frontend
+*   **Framework**: React Native with Expo.
+*   **Navigation**: Expo Router (File-based routing).
+*   **Styling**: Vanilla CSS/Native Styling for mobile.
+*   **Deployment**: Android (APK/AAB) and iOS support via EAS.
+
+### 4.2 Backend
+*   **Framework**: FastAPI (Python).
+*   **Authentication**: JWT (JSON Web Tokens) with Passlib (Bcrypt) for password hashing.
+*   **Asynchronous Processing**: Fully async implementation using Starlette/Uvicorn.
+
+### 4.3 Database
+*   **Type**: NoSQL (MongoDB).
+*   **Driver**: Motor (Async driver for MongoDB).
+
+## 5. Mock Data & Logic
+*   **Locations**: Predefined list of major Indian cities (Mumbai, Pune, Delhi, etc.).
+*   **Distance API**: Mock distance mapping between cities for accurate fare calculation.
+*   **Pricing**: Base fare + Driver Allowance + 5% GST calculation.
+
+## 6. Future Enhancements
+*   Real-time GPS tracking of vehicles.
+*   Integration with payment gateways (Stripe/Razorpay).
+*   Real-time notifications for booking updates.
+*   Driver-side application for trip management.
+*   Automatic address suggestions via Google Maps API.

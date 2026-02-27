@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: citytrail-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 8000
+      - key: MONGO_URL
+        sync: false
+      - key: DB_NAME
+        value: citytrail
