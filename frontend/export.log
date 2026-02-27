@@ -5,3 +5,8 @@ Starting Metro Bundler
 Static rendering is enabled. Learn more: https://docs.expo.dev/router/reference/static-rendering/
 Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  3.0% ( 20/115)
 λ node_modules\expo-router\node\render.js ░░░░░░░░░░░░░░░░  4.7% ( 36/166)
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  3.0% ( 20/115)
+λ node_modules\expo-router\node\render.js ▓▓░░░░░░░░░░░░░░ 14.9% ( 95/246)
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  4.4% ( 31/147)
+λ node_modules\expo-router\node\render.js ▓▓░░░░░░░░░░░░░░ 17.2% (124/311)
+Terminate batch job (Y/N)? Terminate batch job (Y/N)? 

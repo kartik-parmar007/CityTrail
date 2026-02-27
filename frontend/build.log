@@ -1,0 +1,15 @@
+
+> frontend@1.0.0 build
+> npx expo export
+
+env: load .env
+env: export EXPO_TUNNEL_SUBDOMAIN EXPO_PUBLIC_BACKEND_URL EXPO_USE_FAST_RESOLVER METRO_CACHE_ROOT
+Fast resolver is enabled.
+Starting Metro Bundler
+iOS node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Android node_modules\expo-router\entry.js ▓░░░░░░░░░░░░░░░ 10.7% (16/49)
+iOS node_modules\expo-router\entry.js ▓▓▓▓▓░░░░░░░░░░░ 35.1% (333/562)
+Android node_modules\expo-router\entry.js ▓▓▓░░░░░░░░░░░░░ 20.1% (172/405)
+iOS node_modules\expo-router\entry.js ▓▓▓▓▓░░░░░░░░░░░ 36.9% (373/620)
+Android node_modules\expo-router\entry.js ▓▓▓▓▓░░░░░░░░░░░ 35.7% (354/598)
+Terminate batch job (Y/N)? 
