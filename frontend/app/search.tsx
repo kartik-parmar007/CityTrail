@@ -71,12 +71,37 @@ export default function SearchScreen() {
   const loadCars = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/cars`);
-      const data = await response.json();
-      setCars(data);
-      setFilteredCars(data);
+      // Mock data for IT Services
+      const mockServices = [
+        {
+          id: '1',
+          type: 'software',
+          name: 'E-Commerce Website',
+          image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=500&q=80',
+          pricePerKm: 1500,
+          features: ['Scalable'],
+        },
+        {
+          id: '2',
+          type: 'software',
+          name: 'Mobile Application',
+          image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&q=80',
+          pricePerKm: 2500,
+          features: ['Cross-platform'],
+        },
+        {
+          id: '3',
+          type: 'software',
+          name: 'SEO & Marketing',
+          image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&q=80',
+          pricePerKm: 500,
+          features: ['Organic Growth'],
+        }
+      ];
+      setCars(mockServices as any);
+      setFilteredCars(mockServices as any);
     } catch (error) {
-      console.error('Error loading cars:', error);
+      console.error('Error loading services:', error);
     } finally {
       setLoading(false);
     }
@@ -124,9 +149,9 @@ export default function SearchScreen() {
             <Ionicons name="arrow-back-outline" size={24} color="#0f172a" />
           </TouchableOpacity>
           <View style={styles.headerTextContainer}>
-            <Text style={styles.headerTitle}>Select Ride</Text>
+            <Text style={styles.headerTitle}>Select Package</Text>
             <Text style={styles.headerSubtitle} numberOfLines={1}>
-              {params.fromLocation || 'Pickup'} → {params.toLocation || 'Drop-off'} • Today, 10:00 AM
+              {params.fromLocation || 'Client'} | Project Discovery
             </Text>
           </View>
           <TouchableOpacity style={styles.iconButton}>
@@ -179,7 +204,7 @@ export default function SearchScreen() {
             <View style={styles.promoBadge}>
               <Text style={styles.promoBadgeText}>OFFER</Text>
             </View>
-            <Text style={styles.promoTitle}>Get 15% off on your first outstation trip!</Text>
+            <Text style={styles.promoTitle}>Get 15% off on your first project!</Text>
             <TouchableOpacity style={styles.promoButton}>
               <Text style={styles.promoButtonText}>Claim Now</Text>
             </TouchableOpacity>
@@ -269,7 +294,7 @@ export default function SearchScreen() {
               );
             })}
             {filteredCars.length === 0 && (
-              <Text style={{ color: '#64748b', textAlign: 'center', marginTop: 20 }}>No cars found for the selected filters.</Text>
+              <Text style={{ color: '#64748b', textAlign: 'center', marginTop: 20 }}>No packages found for the selected filters.</Text>
             )}
           </View>
         )}

@@ -13,30 +13,30 @@ export default function AboutUsScreen() {
                     <View style={styles.section}>
                         <Text style={styles.heading}>Who We Are</Text>
                         <Text style={styles.text}>
-                            Welcome to CityTrail. We are an innovative mobility and car rental platform dedicated to making your travel seamless, affordable, and comfortable. Based in India, we connect you with a wide array of reliable rental vehicles suited for any occasion.
+                            Welcome to CityTrail. We are an innovative software development and IT services agency dedicated to making your digital transformation seamless, affordable, and effective. Based in India, we connect you with a wide array of reliable digital solutions suited for any business requirement.
                         </Text>
                     </View>
 
                     <View style={styles.section}>
                         <Text style={styles.heading}>Our Mission</Text>
                         <Text style={styles.text}>
-                            Our mission is to empower individuals to explore their cities and beyond with independence and ease. We believe mobility should never be a limitation, but an experience driven by convenience, transparent pricing, and excellent service.
+                            Our mission is to empower businesses to grow their digital presence with independence and ease. We believe technology should never be a limitation, but an experience driven by convenience, transparent pricing, and excellent service.
                         </Text>
                     </View>
 
                     <View style={styles.section}>
                         <Text style={styles.heading}>What We Offer</Text>
                         <View style={styles.list}>
-                            <Text style={styles.listItem}>• Self-Drive Car Rentals</Text>
-                            <Text style={styles.listItem}>• Chauffeur-Driven Vehicles</Text>
-                            <Text style={styles.listItem}>• One-Way and Round-Trip options</Text>
-                            <Text style={styles.listItem}>• 24/7 Roadside Assistance</Text>
+                            <Text style={styles.listItem}>• Custom Web Development</Text>
+                            <Text style={styles.listItem}>• Mobile Application Development</Text>
+                            <Text style={styles.listItem}>• SEO and Digital Marketing</Text>
+                            <Text style={styles.listItem}>• 24/7 Technical Support</Text>
                         </View>
                     </View>
 
                     <View style={styles.section}>
                         <Text style={styles.heading}>Contact Details</Text>
-                        <Text style={styles.text}>Company: CityTrail Rentals</Text>
+                        <Text style={styles.text}>Company: CityTrail IT Services</Text>
                         <Text style={styles.text}>Email: support@citytrail.site</Text>
                         <Text style={styles.text}>Operating Address: 123 Main Street, Sector 15, City Center, India 400001</Text>
                     </View>

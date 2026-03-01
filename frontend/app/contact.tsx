@@ -12,13 +12,13 @@ export default function ContactUsScreen() {
 
                     <View style={styles.section}>
                         <Text style={styles.text}>
-                            We'd love to hear from you. For any inquiries, feedback, or support requests regarding your CityTrail car rentals, please reach out to us using the information below.
+                            We'd love to hear from you. For any inquiries, feedback, or support requests regarding your CityTrail IT services or projects, please reach out to us using the information below.
                         </Text>
                     </View>
 
                     <View style={styles.card}>
                         <Text style={styles.heading}>Registered Office</Text>
-                        <Text style={styles.text}>CityTrail Rentals</Text>
+                        <Text style={styles.text}>CityTrail IT Services</Text>
                         <Text style={styles.text}>123 Main Street, Sector 15</Text>
                         <Text style={styles.text}>City Center, Maharashtra, India 400001</Text>
                     </View>

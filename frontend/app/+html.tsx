@@ -38,6 +38,7 @@ export default function Root({ children }: PropsWithChildren) {
         }}
       >
         {children}
+        <div id="clerk-captcha"></div>
       </body>
     </html>
   );

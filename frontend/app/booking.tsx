@@ -45,7 +45,7 @@ export default function BookingScreen() {
       setCar(data);
     } catch (error) {
       console.error('Error loading car:', error);
-      Alert.alert('Error', 'Failed to load car details');
+      Alert.alert('Error', 'Failed to load package details');
     } finally {
       setLoading(false);
     }
@@ -123,9 +123,9 @@ export default function BookingScreen() {
   };
 
   const getTripTypeName = () => {
-    if (params.tripType === 'oneway') return 'Outstation One Way';
-    if (params.tripType === 'roundtrip') return 'Outstation Round Trip';
-    return 'Local Rental';
+    if (params.tripType === 'oneway') return 'Web Development';
+    if (params.tripType === 'roundtrip') return 'App Development';
+    return 'SEO & Marketing';
   };
 
   if (loading) {
@@ -206,7 +206,7 @@ export default function BookingScreen() {
             <View style={styles.carSectionFooter}>
               <Text style={styles.tripTypeText}>{getTripTypeName()}</Text>
               <TouchableOpacity style={styles.changeCarBtn} onPress={() => router.back()}>
-                <Text style={styles.changeCarText}>Change Car</Text>
+                <Text style={styles.changeCarText}>Change Package</Text>
                 <Ionicons name="chevron-forward-outline" size={16} color="#136dec" />
               </TouchableOpacity>
             </View>
@@ -305,7 +305,7 @@ export default function BookingScreen() {
                   <Text style={styles.fareValue}>₹{fareInfo.fare_breakdown.base_fare}</Text>
                 </View>
                 <View style={styles.fareRow}>
-                  <Text style={styles.fareLabel}>Driver Allowance</Text>
+                  <Text style={styles.fareLabel}>Support Subscription</Text>
                   <Text style={styles.fareValue}>₹{fareInfo.fare_breakdown.driver_allowance}</Text>
                 </View>
                 <View style={styles.fareRow}>
@@ -320,7 +320,7 @@ export default function BookingScreen() {
                 <View style={styles.infoBox}>
                   <Ionicons name="information-circle-outline" size={18} color="#136dec" />
                   <Text style={styles.infoText}>
-                    Excludes toll, parking & interstate taxes. These will be paid by you directly during the trip.
+                    Excludes third-party API and server hosting costs. These will be billed separately if required.
                   </Text>
                 </View>
               </View>

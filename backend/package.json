@@ -12,11 +12,13 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "bcryptjs": "^3.0.3",
+    "@clerk/clerk-expo": "^2.19.29",
+    "@clerk/clerk-sdk-node": "^4.13.23",
+    "@clerk/nextjs": "^6.39.0",
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
+    "expo-secure-store": "^55.0.8",
     "express": "^5.2.1",
-    "jsonwebtoken": "^9.0.3",
     "mongodb": "^7.1.0"
   }
 }

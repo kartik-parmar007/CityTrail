@@ -19,23 +19,23 @@ export default function TermsAndConditionsScreen() {
                     </View>
 
                     <View style={styles.section}>
-                        <Text style={styles.heading}>2. Booking and Payments</Text>
+                        <Text style={styles.heading}>2. Services and Payments</Text>
                         <Text style={styles.text}>
-                            Users must complete bookings securely through the app. The final fare shown during booking is an estimate based on the distance. Any extra kilometers driven or extra time utilized will be billed subsequently at the end of the trip at the predefined rates.
+                            Users must request services securely through the app or website. The final cost shown during consultation is an estimate based on the project scope. Any extra hours or out-of-scope requirements will be billed subsequently at the end of the project at predefined rates.
                         </Text>
                     </View>
 
                     <View style={styles.section}>
-                        <Text style={styles.heading}>3. Vehicle Condition and Fines</Text>
+                        <Text style={styles.heading}>3. Project Scope and Delays</Text>
                         <Text style={styles.text}>
-                            Vehicles must be returned in the condition they were provided. Customers are fully liable for any traffic violations, intentional damages, or speeding fines incurred during their rental period.
+                            Projects must be reviewed in the condition they were delivered. Customers are fully liable for any delays in providing necessary credentials, approvals, or assets incurred during their project timeline.
                         </Text>
                     </View>
 
                     <View style={styles.section}>
                         <Text style={styles.heading}>4. Eligibility</Text>
                         <Text style={styles.text}>
-                            Drivers must possess a valid driver's license in India and be over 21 years of age for self-drive bookings.
+                            Clients must represent an officially registered business entity or be over 18 years of age to legally engage our services.
                         </Text>
                     </View>
 

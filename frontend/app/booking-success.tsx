@@ -34,9 +34,9 @@ export default function BookingSuccessScreen() {
             <Ionicons name="checkmark-circle" size={100} color="#27ae60" />
           </Animated.View>
 
-          <Text style={styles.title}>Booking Confirmed!</Text>
+          <Text style={styles.title}>Project Confirmed!</Text>
           <Text style={styles.subtitle}>
-            Your ride has been successfully booked
+            Your project has been successfully booked
           </Text>
 
           <View style={styles.infoCard}>
@@ -55,7 +55,7 @@ export default function BookingSuccessScreen() {
             </View>
             <View style={styles.featureItem}>
               <Ionicons name="shield-checkmark" size={24} color="#27ae60" />
-              <Text style={styles.featureText}>Secure booking</Text>
+              <Text style={styles.featureText}>Secure package</Text>
             </View>
             <View style={styles.featureItem}>
               <Ionicons name="time" size={24} color="#f39c12" />
@@ -67,7 +67,7 @@ export default function BookingSuccessScreen() {
             style={styles.primaryButton}
             onPress={() => router.push('/(tabs)/bookings')}
           >
-            <Text style={styles.primaryButtonText}>View Booking</Text>
+            <Text style={styles.primaryButtonText}>View Project</Text>
           </TouchableOpacity>
 
           <TouchableOpacity

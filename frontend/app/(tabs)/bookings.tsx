@@ -103,7 +103,7 @@ export default function BookingsScreen() {
           <TouchableOpacity onPress={() => router.back()} style={styles.iconButton}>
             <Ionicons name="arrow-back-outline" size={24} color="#0f172a" />
           </TouchableOpacity>
-          <Text style={styles.headerTitle}>My Bookings</Text>
+          <Text style={styles.headerTitle}>My Projects</Text>
         </View>
         <TouchableOpacity style={styles.iconButton}>
           <Ionicons name="filter-outline" size={24} color="#0f172a" />
@@ -134,12 +134,12 @@ export default function BookingsScreen() {
         {filteredBookings.length === 0 ? (
           <View style={styles.emptyContainer}>
             <Ionicons name="calendar-outline" size={64} color="#cbd5e1" />
-            <Text style={styles.emptyText}>No {activeTab} bookings</Text>
+            <Text style={styles.emptyText}>No {activeTab} projects</Text>
             <TouchableOpacity
               style={styles.browseButton}
               onPress={() => router.push('/(tabs)/home')}
             >
-              <Text style={styles.browseButtonText}>Browse Cars</Text>
+              <Text style={styles.browseButtonText}>Browse Packages</Text>
             </TouchableOpacity>
           </View>
         ) : (
@@ -189,9 +189,9 @@ export default function BookingsScreen() {
                       <Text style={styles.detailValue}>#RDX-{booking.id.slice(-4).toUpperCase()}</Text>
                     </View>
                     <View style={[styles.detailColumn, { alignItems: 'flex-end' }]}>
-                      <Text style={styles.detailLabel}>VEHICLE</Text>
+                      <Text style={styles.detailLabel}>PACKAGE</Text>
                       <View style={styles.vehicleInfo}>
-                        <Ionicons name="car-outline" size={16} color="#0f172a" />
+                        <Ionicons name="briefcase-outline" size={16} color="#0f172a" />
                         <Text style={styles.detailValue}>{booking.car?.name || 'Assigned soon'}</Text>
                       </View>
                     </View>

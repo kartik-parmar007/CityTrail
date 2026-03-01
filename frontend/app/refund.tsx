@@ -12,22 +12,22 @@ export default function RefundPolicyScreen() {
                     <Text style={styles.date}>Effective Date: February 27, 2026</Text>
 
                     <View style={styles.section}>
-                        <Text style={styles.heading}>1. Cancellations by Customer</Text>
+                        <Text style={styles.heading}>1. Cancellations by Client</Text>
                         <Text style={styles.text}>
-                            • Up to 24 hours before pickup: 100% refund of the booking amount.
+                            • Up to 24 hours before project commencement: 100% refund of the advance amount.
                         </Text>
                         <Text style={styles.text}>
-                            • Between 24 and 12 hours before pickup: 50% refund minus a nominal processing fee.
+                            • After project kickoff but before milestone 1: 50% refund minus a nominal processing fee for resources booked.
                         </Text>
                         <Text style={styles.text}>
-                            • Less than 12 hours before pickup: No refund will be permitted.
+                            • After milestone 1 delivery: No refund will be permitted.
                         </Text>
                     </View>
 
                     <View style={styles.section}>
                         <Text style={styles.heading}>2. Cancellation by CityTrail</Text>
                         <Text style={styles.text}>
-                            In the rare scenario that CityTrail is unable to fulfill a confirmed booking due to an unavoidable vehicle breakdown or unforeseen circumstances, the customer will be issued an immediate and 100% refund.
+                            In the rare scenario that CityTrail is unable to fulfill a confirmed contract due to an unavoidable resource constraint or unforeseen circumstances, the client will be issued an immediate and 100% refund.
                         </Text>
                     </View>
 
@@ -41,7 +41,7 @@ export default function RefundPolicyScreen() {
                     <View style={styles.section}>
                         <Text style={styles.heading}>4. Deposit Refund</Text>
                         <Text style={styles.text}>
-                            Security deposits (if collected) will be refunded within 3-5 working days after the successful completion of the trip and inspection of the vehicle, pending no recorded damages, challans, or excess mileage limits breached.
+                            Security or retainer deposits (if collected) will be refunded within 3-5 working days after the successful completion of the project and sign-off, pending no out-of-scope deliveries requested.
                         </Text>
                     </View>
 
