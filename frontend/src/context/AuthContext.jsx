@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import LoadingScreen from '../components/LoadingScreen/LoadingScreen';
 
 const AuthContext = createContext();
 
@@ -23,7 +24,10 @@ export const AuthProvider = ({ children }) => {
                     localStorage.removeItem('token');
                 }
             }
-            setLoading(false);
+            // Add a small delay for a better user experience of the loading screen
+            setTimeout(() => {
+                setLoading(false);
+            }, 1000);
         };
 
         fetchUser();
@@ -68,7 +72,7 @@ export const AuthProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider value={{ user, setUser, loading, login, logout, registerUser }}>
-            {!loading && children}
+            {loading ? <LoadingScreen /> : children}
         </AuthContext.Provider>
     );
 };
