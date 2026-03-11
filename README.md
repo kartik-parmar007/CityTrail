@@ -1,6 +1,6 @@
 <br />
 <div align="center">
-  <img src="frontend/public/logo.jpeg" alt="CityTrail Logo" width="200" />
+  <img src="https://raw.githubusercontent.com/kartik-parmar007/CityTrail/main/frontend/public/logo.jpeg" alt="CityTrail Logo" width="200" />
   
   <h1 align="center">CityTrail</h1>
   <p align="center">
