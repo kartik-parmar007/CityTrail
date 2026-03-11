@@ -30,6 +30,7 @@ const createBooking = async (req, res) => {
             rideType,
             carType,
             calculatedPrice: price,
+            estimatedPrice: price,
             distanceEstimateKM,
             rideDate,
             rideTime,
@@ -120,6 +121,28 @@ const updateBookingStatus = async (req, res) => {
     }
 };
 
+const updateBookingPrice = async (req, res) => {
+    try {
+        const { price } = req.body;
+        const booking = await Booking.findById(req.params.id);
+        
+        if (!booking) return res.status(404).json({ message: 'Booking not found' });
+
+        const numericPrice = Number(price);
+        if (isNaN(numericPrice)) {
+            return res.status(400).json({ message: 'Invalid price value' });
+        }
+
+        booking.calculatedPrice = numericPrice;
+        booking.actualPrice = numericPrice;
+        
+        await booking.save();
+        res.json({ message: 'Price updated successfully', booking });
+    } catch (error) {
+        res.status(500).json({ message: 'Server error', error: error.message });
+    }
+};
+
 const getAllBookings = async (req, res) => {
      try {
         const bookings = await Booking.find()
@@ -189,11 +212,17 @@ const resendOtp = async (req, res) => {
 
 const sendOtpToUser = async (req, res) => {
     try {
-        const { id } = req.body;
+        const { id, actualPrice } = req.body;
         const booking = await Booking.findById(id).populate('user', 'name email phone');
 
         if (!booking) return res.status(404).json({ message: 'Booking not found' });
         
+        if (actualPrice) {
+            const numericPrice = Number(actualPrice);
+            booking.actualPrice = numericPrice;
+            booking.calculatedPrice = numericPrice; // Override calculated price with actual for consistency
+        }
+
         const otp = Math.floor(1000 + Math.random() * 9000).toString();
         booking.otp = otp;
         booking.otpExpiresAt = new Date(Date.now() + 15 * 60 * 1000);
@@ -201,10 +230,12 @@ const sendOtpToUser = async (req, res) => {
         if (booking.user && booking.user.email) {
             const emailSent = await sendEmail({
                 email: booking.user.email,
-                subject: 'CityTrail - Your Ride Security OTP',
-                text: `Dear ${booking.user.name}, your payment is verified. Your ride OTP is: ${otp}. Please enter this in your dashboard to confirm your booking.`,
+                subject: 'CityTrail - Your Ride Security OTP & Final Price',
+                text: `Dear ${booking.user.name}, your payment is verified. Final Price: ₹${booking.actualPrice || booking.calculatedPrice}. Your ride OTP is: ${otp}. Please enter this in your dashboard to confirm your booking.`,
                 html: `<p>Dear ${booking.user.name},</p>
-                <p>Your payment has been verified. To confirm your booking, please use the following OTP in your dashboard:</p>
+                <p>Your payment has been verified. Here are your final ride details:</p>
+                <p><strong>Final Price: <span style="font-size:18px; color:#facc15;">₹${booking.actualPrice || booking.calculatedPrice}</span></strong></p>
+                <p>To confirm your booking and accept this price, please use the following OTP in your dashboard:</p>
                 <p><strong style="font-size:24px; color:green;">${otp}</strong></p>
                 <p>This OTP is valid for 15 minutes.</p>`
             });
@@ -234,5 +265,6 @@ module.exports = {
     getAllBookings,
     cancelBooking,
     resendOtp,
-    sendOtpToUser
+    sendOtpToUser,
+    updateBookingPrice
 };

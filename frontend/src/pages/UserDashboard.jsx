@@ -44,6 +44,13 @@ const UserDashboard = () => {
 
     useEffect(() => {
         fetchMyBookings();
+        
+        // Auto refresh every 15 seconds to catch admin price updates
+        const interval = setInterval(() => {
+            fetchMyBookings();
+        }, 15000);
+        
+        return () => clearInterval(interval);
     }, []);
 
     const fetchMyBookings = async () => {
@@ -99,15 +106,18 @@ const UserDashboard = () => {
     };
 
     const handleConfirmBooking = async () => {
+        console.log('Confirming booking with data:', { ...formData, price: calculatedPrice });
         try {
             const res = await axios.post('/api/bookings/create', { ...formData, price: calculatedPrice }, {
                 headers: { Authorization: `Bearer ${user.token}` }
             });
+            console.log('Booking response:', res.data);
             setCurrentBookingId(res.data.bookingId);
             setBookingState('success');
             fetchMyBookings();
         } catch (error) {
             console.error('Booking creation failed', error);
+            alert('Booking failed: ' + (error.response?.data?.message || error.message));
         }
     };
 
@@ -438,10 +448,23 @@ const UserDashboard = () => {
                                 </div>
 
                                 <div className="ride-details">
-                                    <div className="detail-item">
-                                        <span className="detail-label">Fare</span>
-                                        <span className="detail-value" style={{ color: '#facc15' }}>₹{b.calculatedPrice}</span>
-                                    </div>
+                                    {b.status === 'Pending' ? (
+                                        <div className="detail-item">
+                                            <span className="detail-label">Est. Fare</span>
+                                            <span className="detail-value" style={{ color: '#facc15' }}>₹{b.estimatedPrice || b.calculatedPrice}</span>
+                                        </div>
+                                    ) : (
+                                        <>
+                                            <div className="detail-item">
+                                                <span className="detail-label">Est. Fare</span>
+                                                <span className="detail-value" style={{ textDecoration: 'line-through', fontSize: '0.8rem', opacity: 0.7 }}>₹{b.estimatedPrice || b.calculatedPrice}</span>
+                                            </div>
+                                            <div className="detail-item">
+                                                <span className="detail-label">Final Fare</span>
+                                                <span className="detail-value" style={{ color: '#4ade80', fontWeight: 'bold' }}>₹{b.actualPrice || b.calculatedPrice}</span>
+                                            </div>
+                                        </>
+                                    )}
                                     <div className="detail-item">
                                         <span className="detail-label">Vehicle</span>
                                         <span className="detail-value">{b.carType}</span>
@@ -459,7 +482,10 @@ const UserDashboard = () => {
                                 {(['Pending', 'OTP_Verified', 'Assigned', 'Payment_Verified_OTP_Sent'].includes(b.status)) && (
                                     <div style={{ marginTop: '1.5rem', borderTop: '1px solid #334155', paddingTop: '1rem', display: 'flex', flexDirection: 'column', gap: '10px' }}>
                                         {b.status === 'Payment_Verified_OTP_Sent' && (
-                                            <div style={{ width: '100%' }}>
+                                            <div style={{ width: '100%', textAlign: 'center' }}>
+                                                <p style={{ color: '#facc15', fontSize: '14px', marginBottom: '10px', fontWeight: 'bold' }}>
+                                                    Final Price set by Admin: ₹{b.actualPrice || b.calculatedPrice}
+                                                </p>
                                                 {inlineOtpId === b._id ? (
                                                     <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
                                                         <input

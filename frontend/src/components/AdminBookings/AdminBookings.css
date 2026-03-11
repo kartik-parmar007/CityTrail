@@ -1,0 +1,214 @@
+/* Admin Bookings Premium Styles */
+
+.admin-bookings-container {
+    margin-top: 2rem;
+    animation: fadeIn 0.5s ease;
+}
+
+.admin-bookings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.admin-ride-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.02);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.admin-ride-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+}
+
+.admin-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.admin-card-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #0f172a;
+    font-weight: 700;
+}
+
+.admin-card-body {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.admin-info-section {
+    flex: 1 1 300px;
+}
+
+.admin-info-text {
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+    color: #475569;
+}
+
+.admin-info-text strong {
+    color: #0f172a;
+}
+
+.admin-fare-box {
+    margin-top: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.admin-actual-fare {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #dc2626;
+}
+
+.admin-est-fare {
+    font-size: 0.85rem;
+    color: #64748b;
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+/* Modify Price Section */
+.admin-modify-price-box {
+    flex: 1 1 220px;
+    background: rgba(241, 245, 249, 0.5);
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.admin-modify-price-box label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.admin-price-input-group {
+    display: flex;
+    gap: 8px;
+}
+
+.admin-price-input {
+    flex: 1;
+    padding: 0.6rem;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: #fff;
+    color: #0f172a;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.admin-price-input:focus {
+    outline: none;
+    border-color: #ef4444;
+}
+
+.btn-update-price {
+    padding: 0.6rem 1rem;
+    background: #0f172a;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-update-price:hover {
+    background: #1e293b;
+    transform: translateY(-1px);
+}
+
+/* Action Buttons */
+.admin-actions-footer {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.btn-admin-primary {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+}
+
+.btn-admin-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(220, 38, 38, 0.3);
+}
+
+.btn-admin-outline-danger {
+    background: transparent;
+    color: #ef4444;
+    border: 1px solid #ef4444;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.btn-admin-outline-danger:hover {
+    background: rgba(239, 68, 68, 0.05);
+}
+
+.btn-admin-success {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+}
+
+.admin-status-text {
+    font-size: 0.9rem;
+    color: #64748b;
+    font-style: italic;
+}
+
+.admin-otp-badge {
+    background: rgba(59, 130, 246, 0.1);
+    color: #2563eb;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

@@ -34,6 +34,12 @@ const bookingSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
+  estimatedPrice: {
+    type: Number
+  },
+  actualPrice: {
+    type: Number
+  },
   distanceEstimateKM: {
     type: Number
   },

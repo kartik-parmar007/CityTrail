@@ -36,6 +36,17 @@ const Home = () => {
     const [bookingState, setBookingState] = useState('idle'); // idle, calculating, confirming
     const [calculatedPrice, setCalculatedPrice] = useState(0);
 
+    useEffect(() => {
+        const trackVisit = async () => {
+            try {
+                await axios.post('/api/admin/track-visit');
+            } catch (error) {
+                console.error('Visit tracking failed', error);
+            }
+        };
+        trackVisit();
+    }, []);
+
     const handleCityChange = (e, type) => {
         const value = e.target.value;
         const filtered = INDIA_CITIES.filter(c => c.toLowerCase().includes(value.toLowerCase()));

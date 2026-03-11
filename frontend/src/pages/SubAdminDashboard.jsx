@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import AuthContext from '../context/AuthContext';
 import AdminBookings from '../components/AdminBookings/AdminBookings';
+import Analytics from '../components/Analytics/Analytics';
 import '../App.css';
 
 const SubAdminDashboard = () => {
@@ -14,7 +15,8 @@ const SubAdminDashboard = () => {
         <button className="portal-btn" onClick={logout} style={{ border: 'none', cursor: 'pointer' }}>Logout</button>
       </header>
 
-
+      {/* Analytics Section */}
+      <Analytics />
 
       {/* Bookings Management Section */}
       <AdminBookings />

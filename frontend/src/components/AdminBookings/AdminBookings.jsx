@@ -1,10 +1,13 @@
 import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import AuthContext from '../../context/AuthContext';
+import './AdminBookings.css';
 
 const AdminBookings = () => {
     const { user } = useContext(AuthContext);
     const [bookings, setBookings] = useState([]);
+    const [actualPrices, setActualPrices] = useState({}); // To track input for each booking
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         if (user) fetchBookings();
@@ -12,25 +15,58 @@ const AdminBookings = () => {
 
     const fetchBookings = async () => {
         try {
+            setLoading(true);
             const res = await axios.get('/api/bookings', {
                 headers: { Authorization: `Bearer ${user.token}` }
             });
             setBookings(res.data);
+            
+            // Initialize actual prices with current prices
+            const prices = {};
+            res.data.forEach(b => {
+                prices[b._id] = b.actualPrice || b.calculatedPrice;
+            });
+            setActualPrices(prices);
+            setLoading(false);
         } catch (error) {
             console.error('Failed to fetch bookings', error);
+            setLoading(false);
         }
     };
 
     const handleSendOtp = async (bookingId) => {
         try {
-            await axios.post('/api/bookings/send-user-otp', { id: bookingId }, {
+            const price = actualPrices[bookingId];
+            if (!price) return alert('Please set an actual price before sending OTP');
+
+            await axios.post('/api/bookings/send-user-otp', { id: bookingId, actualPrice: price }, {
                 headers: { Authorization: `Bearer ${user.token}` }
             });
-            alert('OTP sent to user successfully via email.');
+            alert('Final price set and OTP sent to user successfully.');
             fetchBookings();
         } catch (error) {
             console.error('Failed to send OTP', error);
-            alert('Failed to send OTP');
+            alert('Failed to send OTP: ' + (error.response?.data?.message || error.message));
+        }
+    };
+
+    const handleUpdatePrice = async (bookingId) => {
+        try {
+            const price = actualPrices[bookingId];
+            if (!price) return alert('Please enter a price');
+
+            // Use the absolute path if axios baseURL isn't configured globally
+            await axios.put(`/api/bookings/${bookingId}/price`, { price }, {
+                headers: { 
+                    Authorization: `Bearer ${user.token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+            alert('Price updated successfully');
+            fetchBookings();
+        } catch (error) {
+            console.error('Failed to update price', error);
+            alert('Failed to update price: ' + (error.response?.data?.message || error.message));
         }
     };
 
@@ -47,74 +83,116 @@ const AdminBookings = () => {
         }
     };
 
-    return (
-        <div style={{ marginTop: '2rem' }}>
-            <h2 style={{ color: '#fff' }}>Manage Bookings</h2>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1rem' }}>
-                {bookings.length === 0 ? <p style={{ color: '#fff' }}>No bookings available.</p> : null}
-                {bookings.map(b => (
-                    <div key={b._id} style={{ background: '#1e293b', color: '#fff', padding: '15px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #334155', paddingBottom: '10px', marginBottom: '10px' }}>
-                            <strong style={{ fontSize: '1.2rem' }}>{b.pickupCity} → {b.dropCity}</strong>
-                            <span style={{ fontWeight: 'bold', color: b.status === 'Pending' ? '#facc15' : '#4ade80' }}>{b.status}</span>
-                        </div>
-                        <p style={{ margin: '5px 0', color: '#94a3b8' }}>User: <span style={{ color: '#fff' }}>{b.user?.name}</span> | Phone: <span style={{ color: '#fff' }}>{b.user?.phone}</span> | Email: <span style={{ color: '#fff' }}>{b.user?.email}</span></p>
-                        <p style={{ margin: '5px 0', color: '#94a3b8' }}>Date: <span style={{ color: '#fff' }}>{b.rideDate} at {b.rideTime}</span> | Price: <span style={{ color: '#facc15' }}>₹{b.calculatedPrice}</span> | Car: <span style={{ color: '#fff' }}>{b.carType}</span></p>
+    if (loading && bookings.length === 0) return <div className="admin-bookings-container">Loading bookings...</div>;
 
-                        {b.status === 'Pending' && (
-                            <div style={{ marginTop: '15px', display: 'flex', gap: '10px' }}>
-                                <button
-                                    onClick={() => handleSendOtp(b._id)}
-                                    style={{ padding: '8px 15px', background: '#3b82f6', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}
-                                >
-                                    Payment Received - Send OTP
-                                </button>
-                                <button
-                                    onClick={() => handleUpdateStatus(b._id, 'Cancelled')}
-                                    style={{ padding: '8px 15px', background: 'transparent', color: '#ef4444', border: '1px solid #ef4444', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', fontSize: '14px' }}
-                                >
-                                    Cancel Ride
-                                </button>
+    return (
+        <div className="admin-bookings-container">
+            <h2 style={{ color: '#0f172a', fontWeight: '800' }}>Manage All Ride Bookings</h2>
+            
+            <div className="admin-bookings-list">
+                {bookings.length === 0 ? <p>No ride bookings found.</p> : null}
+                
+                {bookings.map(b => (
+                    <div key={b._id} className="admin-ride-card">
+                        <div className="admin-card-header">
+                            <h3>{b.pickupCity} → {b.dropCity}</h3>
+                            <span className={`status-badge status-${b.status.toLowerCase()}`}>
+                                {b.status.replace(/_/g, ' ')}
+                            </span>
+                        </div>
+                        
+                        <div className="admin-card-body">
+                            <div className="admin-info-section">
+                                <p className="admin-info-text">User: <strong>{b.user?.name || 'Deleted User'}</strong></p>
+                                <p className="admin-info-text">Phone: <strong>{b.user?.phone || 'N/A'}</strong></p>
+                                <p className="admin-info-text">Schedule: <strong>{b.rideDate} at {b.rideTime}</strong></p>
+                                <p className="admin-info-text">Vehicle: <strong>{b.carType} ({b.rideType})</strong></p>
+                                
+                                <div className="admin-fare-box">
+                                    <span className="admin-actual-fare">₹{b.actualPrice || b.calculatedPrice}</span>
+                                    {b.estimatedPrice && b.estimatedPrice !== (b.actualPrice || b.calculatedPrice) && (
+                                        <span className="admin-est-fare">₹{b.estimatedPrice}</span>
+                                    )}
+                                </div>
                             </div>
-                        )}
-                        {b.status === 'Payment_Verified_OTP_Sent' && (
-                            <div style={{ marginTop: '15px', display: 'flex', flexDirection: 'column', gap: '5px' }}>
-                                <span style={{ padding: '5px 10px', background: 'rgba(59, 130, 246, 0.2)', color: '#60a5fa', border: '1px solid #3b82f6', borderRadius: '4px', fontSize: '14px' }}>
-                                    OTP sent to user, waiting for verification...
+
+                            <div className="admin-modify-price-box">
+                                <label>Modify Fare</label>
+                                <div className="admin-price-input-group">
+                                    <input 
+                                        type="number" 
+                                        className="admin-price-input"
+                                        placeholder="New Price"
+                                        value={actualPrices[b._id] || ''} 
+                                        onChange={(e) => setActualPrices({...actualPrices, [b._id]: e.target.value})}
+                                    />
+                                    <button 
+                                        className="btn-update-price"
+                                        onClick={() => handleUpdatePrice(b._id)}
+                                    >
+                                        Update
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="admin-actions-footer">
+                            {b.status === 'Pending' && (
+                                <>
+                                    <button
+                                        className="btn-admin-primary"
+                                        onClick={() => handleSendOtp(b._id)}
+                                    >
+                                        Verify Payment & Send OTP
+                                    </button>
+                                    <button
+                                        className="btn-admin-outline-danger"
+                                        onClick={() => handleUpdateStatus(b._id, 'Cancelled')}
+                                    >
+                                        Cancel Ride
+                                    </button>
+                                </>
+                            )}
+
+                            {b.status === 'Payment_Verified_OTP_Sent' && (
+                                <>
+                                    <div className="admin-otp-badge">
+                                        Security OTP: <strong>{b.otp}</strong>
+                                    </div>
+                                    <span className="admin-status-text">Waiting for user verification...</span>
+                                    <button
+                                        className="btn-admin-outline-danger"
+                                        onClick={() => handleUpdateStatus(b._id, 'Cancelled')}
+                                        style={{ marginLeft: 'auto' }}
+                                    >
+                                        Cancel
+                                    </button>
+                                </>
+                            )}
+
+                            {b.status === 'OTP_Verified' && (
+                                <>
+                                    <button
+                                        className="btn-admin-success"
+                                        onClick={() => handleUpdateStatus(b._id, 'Completed')}
+                                    >
+                                        Mark as Completed
+                                    </button>
+                                    <button
+                                        className="btn-admin-outline-danger"
+                                        onClick={() => handleUpdateStatus(b._id, 'Cancelled')}
+                                    >
+                                        Cancel Ride
+                                    </button>
+                                </>
+                            )}
+
+                            {(b.status === 'Completed' || b.status === 'Cancelled') && (
+                                <span className="admin-status-text">
+                                    Ride was {b.status.toLowerCase()} on {new Date(b.updatedAt).toLocaleDateString()}
                                 </span>
-                                {b.otp && (
-                                    <span style={{ fontSize: '14px', color: '#facc15' }}>
-                                        Current OTP: <strong>{b.otp}</strong> (Provide to user if email fails)
-                                    </span>
-                                )}
-                            </div>
-                        )}
-                        {b.status === 'OTP_Verified' && (
-                            <div style={{ marginTop: '15px', display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'center' }}>
-                                <span style={{ padding: '8px 10px', background: 'rgba(74, 222, 128, 0.2)', color: '#4ade80', border: '1px solid #4ade80', borderRadius: '4px', fontSize: '14px' }}>
-                                    ✓ User Verified & Confirmed
-                                </span>
-                                <button
-                                    onClick={() => handleUpdateStatus(b._id, 'Completed')}
-                                    style={{ padding: '8px 15px', background: '#10b981', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', fontSize: '14px' }}
-                                >
-                                    Mark as Completed
-                                </button>
-                                <button
-                                    onClick={() => handleUpdateStatus(b._id, 'Cancelled')}
-                                    style={{ padding: '8px 15px', background: 'transparent', color: '#ef4444', border: '1px solid #ef4444', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', fontSize: '14px' }}
-                                >
-                                    Cancel Ride
-                                </button>
-                            </div>
-                        )}
-                        {(b.status === 'Completed' || b.status === 'Cancelled') && (
-                            <div style={{ marginTop: '15px' }}>
-                                <span style={{ padding: '5px 10px', background: b.status === 'Completed' ? 'rgba(56, 189, 248, 0.2)' : 'rgba(239, 68, 68, 0.2)', color: b.status === 'Completed' ? '#38bdf8' : '#ef4444', border: `1px solid ${b.status === 'Completed' ? '#38bdf8' : '#ef4444'}`, borderRadius: '4px', fontSize: '14px' }}>
-                                    Ride {b.status}
-                                </span>
-                            </div>
-                        )}
+                            )}
+                        </div>
                     </div>
                 ))}
             </div>

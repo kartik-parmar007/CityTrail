@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import axios from 'axios';
 import AuthContext from '../context/AuthContext';
 import AdminBookings from '../components/AdminBookings/AdminBookings';
+import Analytics from '../components/Analytics/Analytics';
 import '../App.css';
 
 const SuperAdminDashboard = () => {
@@ -42,6 +43,9 @@ const SuperAdminDashboard = () => {
                     </form>
                 </section>
             </div>
+
+            {/* Analytics Section */}
+            <Analytics />
 
             {/* Bookings Management Section */}
             <AdminBookings />
