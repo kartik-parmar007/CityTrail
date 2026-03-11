@@ -4,6 +4,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
@@ -11,24 +12,45 @@
     align-items: center;
     z-index: 9999;
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    overflow: hidden;
 }
 
 .loading-footer {
     position: absolute;
     bottom: 2rem;
+    bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
     color: #64748b;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     text-align: center;
+    width: 100%;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+    left: 0;
+    line-height: 1.6;
 }
 
 .loading-footer a {
     color: #3498db;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 700;
 }
 
 .loading-footer a:hover {
     text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+    .loading-text {
+        font-size: 1.5rem;
+    }
+    .loading-subtext {
+        font-size: 0.95rem;
+    }
+    .loading-footer {
+        bottom: 1.5rem;
+        bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+        font-size: 0.8rem;
+    }
 }
 
 .loading-container {

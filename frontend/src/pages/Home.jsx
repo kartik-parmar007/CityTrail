@@ -216,8 +216,8 @@ const Home = () => {
             </div>
 
             <footer style={{ width: '100%', textAlign: 'center', marginTop: 'auto', paddingTop: '3rem', paddingBottom: '1rem', color: '#64748b', fontSize: '0.85rem' }}>
-                &copy; {new Date().getFullYear()} CityTrail.<br />
-                All rights reserved by <a href="https://eaglebyte.in" target="_blank" rel="noopener noreferrer" className="footer-link">EagleByte.in</a>
+                &copy; {new Date().getFullYear()} CityTrail. All Rights Reserved.<br />
+                Powered by <a href="https://eaglebyte.in" target="_blank" rel="noopener noreferrer" className="footer-link">EagleByte.in</a>
             </footer>
         </div>
     );

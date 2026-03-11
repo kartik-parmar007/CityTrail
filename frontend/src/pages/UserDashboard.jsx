@@ -202,8 +202,8 @@ const UserDashboard = () => {
                     <LogOut /> Logout
                 </button>
                 <div style={{ textAlign: 'center', marginTop: '1.5rem', fontSize: '0.75rem', color: '#64748b' }}>
-                    &copy; {new Date().getFullYear()} CityTrail.<br />
-                    All rights reserved by <a href="https://eaglebyte.in" target="_blank" rel="noopener noreferrer" className="footer-link">EagleByte.in</a>
+                    &copy; {new Date().getFullYear()} CityTrail. All Rights Reserved.<br />
+                    Powered by <a href="https://eaglebyte.in" target="_blank" rel="noopener noreferrer" className="footer-link">EagleByte.in</a>
                 </div>
             </div>
         </div>

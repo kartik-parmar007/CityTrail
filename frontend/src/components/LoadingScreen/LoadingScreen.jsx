@@ -11,7 +11,7 @@ const LoadingScreen = () => {
                 <p className="loading-subtext">Setting up your ride...</p>
             </div>
             <div className="loading-footer">
-                &copy; {new Date().getFullYear()} CityTrail. All rights reserved by <a href="https://eaglebyte.in" target="_blank" rel="noopener noreferrer">EagleByte.in</a>
+                &copy; {new Date().getFullYear()} CityTrail. All Rights Reserved. Powered by <a href="https://eaglebyte.in" target="_blank" rel="noopener noreferrer">EagleByte.in</a>
             </div>
         </div>
     );
