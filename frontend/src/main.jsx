@@ -8,6 +8,7 @@ createRoot(document.getElementById('root')).render(
     <App />
   </StrictMode>,
 )
+<<<<<<< HEAD
 
 // Register Service Worker for PWA
 if ('serviceWorker' in navigator) {
@@ -22,3 +23,5 @@ if ('serviceWorker' in navigator) {
       });
   });
 }
+=======
+>>>>>>> b9f92a9bcdcc037a3ddfaa8e3442089792c02471

@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+<<<<<<< HEAD
     "dev": "vite --host",
     "build": "vite build",
     "lint": "eslint .",
@@ -16,6 +17,14 @@
     "@capacitor/cli": "^8.2.0",
     "@capacitor/core": "^8.2.0",
     "@capacitor/ios": "^8.2.0",
+=======
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+>>>>>>> b9f92a9bcdcc037a3ddfaa8e3442089792c02471
     "@clerk/react": "^6.0.1",
     "axios": "^1.13.6",
     "lucide-react": "^0.577.0",
@@ -37,4 +46,8 @@
   "overrides": {
     "vite": "^8.0.0-beta.13"
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b9f92a9bcdcc037a3ddfaa8e3442089792c02471
