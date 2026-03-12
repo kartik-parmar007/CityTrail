@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">CityTrail</string>
+    <string name="title_activity_main">CityTrail</string>
+    <string name="package_name">com.citytrail.app</string>
+    <string name="custom_url_scheme">com.citytrail.app</string>
+</resources>
