@@ -1,56 +1,12 @@
 <!doctype html>
 <html lang="en">
-<<<<<<< HEAD
-
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" href="/app-icon.png" />
-  <link rel="manifest" href="/manifest.json" />
-  <link rel="apple-touch-icon" href="/app-icon.png" />
-  <meta name="apple-mobile-web-app-status-bar" content="#ffffff" />
-  <meta name="theme-color" content="#ffffff" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Primary Meta Tags -->
-  <title>CityTrail - Premium Intercity Rides | By Kartik Parmar & EagleByte</title>
-  <meta name="title" content="CityTrail - Premium Intercity Rides | By Kartik Parmar & EagleByte">
-  <meta name="description"
-    content="CityTrail offers premium, reliable, and comfortable intercity cab rides across India. Developed by Kartik Parmar at EagleByte web services.">
-  <meta name="keywords"
-    content="CityTrail, Kartik Parmar, EagleByte, EagleByte web services, online cab booking, premium rides, intercity cabs India, taxi service, City Trail, Kartik, Parmar">
-  <meta name="author" content="Kartik Parmar, EagleByte">
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://citytrail.site/">
-  <meta property="og:title" content="CityTrail - Premium Intercity Rides | By Kartik Parmar & EagleByte">
-  <meta property="og:description"
-    content="CityTrail offers premium, reliable, and comfortable intercity cab rides across India. Developed by Kartik Parmar at EagleByte web services.">
-  <meta property="og:image" content="/logo.jpeg">
-
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://citytrail.site/">
-  <meta property="twitter:title" content="CityTrail - Premium Intercity Rides | By Kartik Parmar & EagleByte">
-  <meta property="twitter:description"
-    content="CityTrail offers premium, reliable, and comfortable intercity cab rides across India. Developed by Kartik Parmar at EagleByte web services.">
-  <meta property="twitter:image" content="/logo.jpeg">
-
-  <!-- Search Engine Indexing -->
-  <meta name="robots" content="index, follow">
-  <meta name="googlebot" content="index, follow">
-</head>
-
-<body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
-</body>
-
-</html>
-=======
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/jpeg" href="/logo.jpeg" />
+    <link rel="icon" type="image/png" href="/app-icon.png" />
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/app-icon.png" />
+    <meta name="apple-mobile-web-app-status-bar" content="#ffffff" />
+    <meta name="theme-color" content="#ffffff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Primary Meta Tags -->
@@ -81,6 +37,13 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js')
+        .then(function() {
+          console.log("Service Worker Registered");
+        });
+      }
+    </script>
   </body>
 </html>
->>>>>>> b9f92a9bcdcc037a3ddfaa8e3442089792c02471

@@ -3,9 +3,9 @@ const User = require('../models/User');
 const sendEmail = require('../utils/sendEmail');
 
 const prices = {
-    'Sedan': 11,
+    'Sedan': 10,
     'SUV': 12,
-    'Innova': 18
+    'Innova': 16
 };
 
 const calculatePrice = async (req, res) => {
@@ -13,7 +13,7 @@ const calculatePrice = async (req, res) => {
     let multiplier = 1;
     if (rideType === 'Two Way') multiplier = 2; // Rough estimate logic
     
-    const rate = prices[carType] || 11;
+    const rate = prices[carType] || 10;
     const price = distanceEstimateKM * rate * multiplier;
 
     res.json({ price });

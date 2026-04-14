@@ -279,9 +279,9 @@ const UserDashboard = () => {
                     <div className="form-group">
                         <label>Car Category</label>
                         <select className="premium-input premium-select" value={formData.carType} onChange={e => setFormData({ ...formData, carType: e.target.value })}>
-                            <option value="Sedan">Sedan (4 Seater - ₹11/km)</option>
+                            <option value="Sedan">Sedan (4 Seater - ₹10/km)</option>
                             <option value="SUV">SUV (6-7 Seater - ₹12/km)</option>
-                            <option value="Innova">Innova (Luxury - ₹18/km)</option>
+                            <option value="Innova">Innova (Luxury - ₹16/km)</option>
                         </select>
                     </div>
 

@@ -2,8 +2,9 @@ import { useState, useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
 import axios from 'axios';
-import { CarFront, MapPin, Navigation, Calendar, Clock, IndianRupee } from 'lucide-react';
+import { CarFront, MapPin, Navigation, Calendar, Clock, IndianRupee, Smartphone } from 'lucide-react';
 import '../Dashboard.css';
+import InstallApp from '../components/InstallApp';
 
 const INDIA_CITIES = [
     "Ahmedabad", "Surat", "Vadodara", "Rajkot", "Bhavnagar", "Jamnagar", "Gandhinagar", "Junagadh", "Gandhidham", "Anand",
@@ -88,10 +89,8 @@ const Home = () => {
 
     const handleConfirmBooking = () => {
         if (!user) {
-            // Redirect to login
             navigate('/login');
         } else {
-            // If logged in, navigate to dashboard to finish booking
             navigate('/user');
         }
     };
@@ -101,14 +100,23 @@ const Home = () => {
             <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 20px', maxWidth: '1200px' }}>
                 <img src="/logo.jpeg" alt="CityTrail Logo" style={{ height: '50px', objectFit: 'contain' }} />
 
-                {!user ? (
-                    <Link to="/login" className="portal-btn btn-login" style={{ padding: '10px 20px' }}>Login</Link>
-                ) : (
-                    <Link to="/user" className="portal-btn btn-login" style={{ padding: '10px 20px' }}>Dashboard</Link>
-                )}
+                <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                    <Link to="/download" style={{ color: '#ef4444', textDecoration: 'none', fontWeight: '600', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '5px' }}>
+                        <Smartphone size={16} /> Get App
+                    </Link>
+                    {!user ? (
+                        <Link to="/login" className="portal-btn btn-login" style={{ padding: '8px 16px', minWidth: 'auto' }}>Login</Link>
+                    ) : (
+                        <Link to="/user" className="portal-btn btn-login" style={{ padding: '8px 16px', minWidth: 'auto' }}>Dashboard</Link>
+                    )}
+                </div>
             </div>
 
-            <div className="glass-card" style={{ maxWidth: '600px', width: '100%', marginTop: '2rem' }}>
+            <div style={{ marginTop: '2rem', width: '100%', display: 'flex', justifyContent: 'center' }}>
+                <InstallApp />
+            </div>
+
+            <div className="glass-card" style={{ maxWidth: '600px', width: '100%', marginTop: '0rem' }}>
                 <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Book Your Ride</h2>
 
                 {bookingState === 'idle' && (
@@ -167,9 +175,9 @@ const Home = () => {
                         <div className="form-group">
                             <label>Car Category</label>
                             <select className="premium-input premium-select" value={formData.carType} onChange={e => setFormData({ ...formData, carType: e.target.value })}>
-                                <option value="Sedan">Sedan (4 Seater - ₹11/km)</option>
+                                <option value="Sedan">Sedan (4 Seater - ₹10/km)</option>
                                 <option value="SUV">SUV (6-7 Seater - ₹12/km)</option>
-                                <option value="Innova">Innova (Luxury - ₹18/km)</option>
+                                <option value="Innova">Innova (Luxury - ₹16/km)</option>
                             </select>
                         </div>
 
